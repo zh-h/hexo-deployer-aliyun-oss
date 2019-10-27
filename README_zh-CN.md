@@ -1,40 +1,42 @@
 # hexo-deployer-aliyun-oss
-Aliyun OSS deployer for Hexo
+将 Hexo 静态网站部署到阿里云 OSS
 
-## Preparation
-### 1. Install ossutil
-https://help.aliyun.com/document_detail/120075.html?spm=a2c4g.11186623.6.697.4c684813dpka22
+## 准备
+### 1. 安装 ossutil
+参考阿里云文档 https://help.aliyun.com/document_detail/120075.html?spm=a2c4g.11186623.6.697.4c684813dpka22
 
-### 2. OSS config
-https://help.aliyun.com/document_detail/120072.html?spm=a2c4g.11186623.6.704.45f2448a8hDnRl#title-pkz-2sj-0cc
+### 2. OSS 配置
+参考阿里云文档 https://help.aliyun.com/document_detail/120072.html?spm=a2c4g.11186623.6.704.45f2448a8hDnRl#title-pkz-2sj-0cc
 
-`stsToken` is not required.
+使用交互式设置最方便， `stsToken` 这个属性不必设置
 
-## Hexo config
-### 1. install aliyun oss deploy plugin
+## Hexo 配置
+### 1. 安装阿里云 OSS 部署插件
 
 ```bash
 npm i git+https://github.com/zh-h/hexo-deployer-aliyun-oss.git#master
 ```
+我还没准备好发布到 npmjs.org, 可以用 git 安装
 
-### 2. editing config file
-Open `_config.yml`, locate to `deploy` section.
+### 2. 修改 Hexo 的部署配置
+打开 `_config.yml`, 定位到 `deploy` 段
 
-Add `type`, `bucket`, `ossCliPath` follow, like this:
+在后面添加 `type`, `bucket`, `ossCliPath` 配置, 像这样子:
 ```yaml
 deploy:
 - type: aliyun-oss
   bucket: applehater
   ossCliPath: /Users/x/IdeaProjects/ossutilmac64 
 ```
-Setting `permalink` as `:year/:month/:day/:title/index.html` which is end with `index.html`
 
-## Hexo generate and deploy
+还要把 `permalink` 配置成 `:year/:month/:day/:title/index.html` 以`index.html` 结尾才能访问到页面
+
+## Hexo 构建和部署
 
 ```bash
 hexo d
 ```
-Terminal output:
+终端输出
 ```bash
 xs-iMac:zh-h.github.io x$ hexo d
 INFO  Deploying: aliyun-oss
@@ -44,11 +46,11 @@ Total num: 739, size: 8,642,283. Dealed num: 135(upload 43 files, 92 directories
 45.390422(s) elapsed
 INFO  Deploy done: aliyun-oss
 ```
-To deploy after generating, you can run one of the following commands. There is no difference between the two.
+在构建后部署, 或者用以下命令构建后直接部署
 ```bash
 hexo g -d
 ```
 
-All done, vist: http://applehater.cn/ (your oss/site url)
+部署完成, 访问: http://applehater.cn/ (你的 oss 或者网站地址)
 
 Happy writing, Happy deploying 😎
