@@ -1,0 +1,25 @@
+{
+  "name": "hexo-deployer-aliyun-oss",
+  "version": "0.0.1",
+  "description": "Aliyun OSS deployer for Hexo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zh-h/hexo-deployer-aliyun-oss.git"
+  },
+  "keywords": [
+    "hexo",
+    "aliyun",
+    "oss",
+    "free"
+  ],
+  "author": "zonghua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zh-h/hexo-deployer-aliyun-oss/issues"
+  },
+  "homepage": "https://github.com/zh-h/hexo-deployer-aliyun-oss#readme"
+}
