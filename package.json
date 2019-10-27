@@ -4,7 +4,7 @@
   "description": "Aliyun OSS deployer for Hexo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/zh-h/hexo-deployer-aliyun-oss/issues"
   },
-  "homepage": "https://github.com/zh-h/hexo-deployer-aliyun-oss#readme"
+  "homepage": "https://github.com/zh-h/hexo-deployer-aliyun-oss#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "hexo": "^4.0.0",
+    "mocha": "^6.2.2"
+  }
 }

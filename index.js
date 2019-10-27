@@ -1,20 +1,12 @@
-const spawn = require('hexo-util/lib/spawn');
-const pathFn = require('path');
+const deployer = require('./lib/deployer');
+const makeAliyunOssUrlForHelper = require('./lib/helpers').makeAliyunOssUrlForHelper;
 
-hexo.extend.deployer.register('aliyun-oss', function (args, callback) {
-  console.log(JSON.stringify(args))
-  if (!args.bucket || !args.ossCliPath) {
-    console.error('Please config <bucket> and <ossCliPath> in _config.yml deploy section');
-    return callback();
-  }
-  const ossArgs = [
-    'cp',
-    '-r',
-    '-f',
-    pathFn.resolve('public/'),
-    `oss://${args.bucket}/`
-  ]
-  spawn(args.ossCliPath, ossArgs, { verbose: true }).then(function () {
-    callback();
-  })
-});
+// 调用oss命令行工具进行部署
+hexo.extend.deployer.register('aliyun-oss', deployer);
+
+// 取出原本的链接生成辅助函数进行扩展
+// 参考 https://hexo.io/zh-cn/api/helper
+const url_for = hexo.extend.helper.get('url_for').bind(hexo);
+
+// 扩展成 OSS 部署使用的链接生成函数
+hexo.extend.helper.register('url_for', makeAliyunOssUrlForHelper(url_for));
